@@ -1,0 +1,12 @@
+<h1>Employee Profile</h1>
+<p> 
+<strong>Name:</strong> <%= Current.employee.name%> <br>
+<strong>Email:</strong> <%= Current.employee.email%> <br>
+<strong>Contact Number:</strong> <%= Current.employee.contact_number%> <br>
+<strong>Address:</strong> <%= Current.employee.address%> <br>
+<strong>Role:</strong> <%= Current.employee.role%> <br>
+<strong>Experience in years:</strong> <%= Current.employee.experience%> <br>
+</p>
+
+Logged in as: <%= Current.employee.email %><br>
+<%= button_to 'Logout', logout_path, method: :delete %>
