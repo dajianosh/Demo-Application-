@@ -5,7 +5,7 @@ class RegistrationsController < ApplicationController
   end  
 
   def new
-    @employee = Employee.new if @employee.blank?  
+    @employee = Employee.new if @employee.blank?
   end
   
   def create
@@ -22,5 +22,4 @@ class RegistrationsController < ApplicationController
   def employee_params
     params.require(:employee).permit(:email, :password, :password_confirmation, :name, :role, :address, :contact_number, :experience)
   end
-  
 end
