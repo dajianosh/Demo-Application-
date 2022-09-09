@@ -1,46 +1,74 @@
 <h1>Sign Up</h1>
-  <%= form_with model: @employee, url: sign_up_path, local: true do |f| %>
-  
+  <%= form_with model: @employee, url: registrations_path , local: true do |f| %>
+   
+    <p>
+      <%= f.label 'email' %><br>
+      <%= f.text_field :email %>
       <ul>
-        <% @employee.errors.full_messages.each do |msg| %>
+        <% @employee.errors[:email].each do |msg| %>
           <li><%= msg %></li>
         <% end %>
       </ul>
-   
-    <p>
-    <%= f.label 'email' %><br>
-    <%= f.text_field :email %>
     </p>
     <p>
-    <%= f.label 'password' %><br>
-    <%= f.password_field :password %>
+      <%= f.label 'password' %><br>
+      <%= f.password_field :password %>
+      <ul>
+        <% @employee.errors[:password].each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
     </p>
     <p>
-    <%= f.label 'password_confirmation' %><br>
-    <%= f.password_field :password_confirmation %>
+      <%= f.label 'password_confirmation' %><br>
+      <%= f.password_field :password_confirmation %>
     </p>
     <p>
-    <%= f.label 'name' %><br>
-    <%= f.text_field :name %>
+      <%= f.label 'name' %><br>
+      <%= f.text_field :name %>
+      <ul>
+        <% @employee.errors[:name].each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
     </p>
     <p>
-    <%= f.label 'role' %><br>
-    <%= f.select :role, options_for_select([["Select One", ""], "HR", "Resource"]) %>
+      <%= f.label 'role' %><br>
+      <%= f.select :role, options_for_select([["Select One", ""], "HR", "Resource"]) %>
+      <ul>
+        <% @employee.errors[:role].each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
     </p>
     <p>
-    <%= f.label 'address' %><br>
-    <%= f.text_field :address %>
+      <%= f.label 'address' %><br>
+      <%= f.text_field :address %>
+      <ul>
+        <% @employee.errors[:address].each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
     </p>
     <p>
-    <%= f.label 'contact_number' %><br>
-    <%= f.text_field :contact_number %>
+      <%= f.label 'contact_number' %><br>
+      <%= f.telephone_field :contact_number %>
+      <ul>
+        <% @employee.errors[:contact_number].each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
     </p>
     <p>
-    <%= f.label 'experience in years' %><br>
-    <%= f.text_field :experience %>
+      <%= f.label 'experience in years' %><br>
+      <%= f.number_field :experience %>
+      <ul>
+        <% @employee.errors[:experience].each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
     </p>
     <p>
     <%= f.submit 'Sign Up' %>
     </p>
   <% end %>
-  
