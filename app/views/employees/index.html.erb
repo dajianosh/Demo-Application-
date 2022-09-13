@@ -1,0 +1,9 @@
+<h1> Employee Authentication</h1>
+	<% if current_employee %>
+    Logged in as: <%= current_employee.email %><br>
+    <%= link_to 'Logout', new_session_path, method: :delete %>
+	<% else %>
+    <%= link_to 'Sign Up',  new_registration_path %>
+    or
+    <%= link_to 'Login', new_session_path, method: :get %>
+  <% end %>
