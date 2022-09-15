@@ -4,6 +4,4 @@ Rails.application.routes.draw do
     root "devise/sessions#new"
   end  
   resources :employees, only: [:index, :show, :edit, :update]
-  #resources :registrations, only: [:new, :create, :index]
-  #resources :sessions, only: [:new, :create, :destroy] 
 end

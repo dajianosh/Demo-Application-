@@ -1,58 +1,33 @@
 <h1>Edit Employee Profile for <%= current_employee.name %> </h1>
 
-  <%= form_with model: @employee, url: employee_path(@employee.id)  , local: true do |f| %>
-    <div class="field">
-      <%= f.label :name %><br />
-      <%= f.text_field :name%>
-      <ul>
-        <% @employee.errors[:name].each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-
-    <div class="field">
-      <%= f.label 'role' %><br>
-      <%= f.select :role, options_for_select([["Select One", ""], "HR", "Resource"]) %>
-      <ul>
-        <% @employee.errors[:role].each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-
-    <div class="field">
-      <%= f.label :address %><br />
-      <%= f.text_field :address %>
-      <ul>
-        <% @employee.errors[:address].each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-
-    <div class="field">
-      <%= f.label :contact_number %><br />
-      <%= f.text_field :contact_number %>
-      <ul>
-        <% @employee.errors[:contact_number].each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-
-    <div class="field">
-      <%= f.label :experience %><br />
-      <%= f.number_field :experience %>
-      <ul>
-        <% @employee.errors[:experience].each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "Confirm Changes" %>
-    </div>
-  <% end %>
-  <%= link_to "Back", :back %>
+<%= form_with model: current_employee, url: employee_path(current_employee.id), local: true do |f| %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+    <%= render "shared/error_messages", { field: :name } %>
+  </div>
+  <div class="field">
+    <%= f.label 'role' %><br>
+    <%= f.select :role, [ "HR", "Resource" ] %>
+    <%= render "shared/error_messages", { field: :role } %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+    <%= render "shared/error_messages", { field: :address } %>
+  </div>
+  <div class="field">
+    <%= f.label :contact_number %><br />
+    <%= f.text_field :contact_number %>
+    <%= render "shared/error_messages", { field: :contact_number } %>
+  </div>
+  <div class="field">
+    <%= f.label :experience %><br />
+    <%= f.number_field :experience %>
+    <%= render "shared/error_messages", { field: :experience } %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Confirm Changes" %>
+  </div>
+<% end %>
+<%= link_to "Back", :back %>

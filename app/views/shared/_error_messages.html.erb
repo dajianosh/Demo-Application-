@@ -1,0 +1,13 @@
+<% if employee_signed_in? %>
+  <ul>
+    <% current_employee.errors[field].each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% else %> 
+  <ul>
+    <% @employee.errors[field].each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
