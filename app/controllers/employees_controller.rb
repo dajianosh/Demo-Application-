@@ -5,16 +5,11 @@ class EmployeesController < ApplicationController
     redirect_to new_employee_registration_path
   end 
 
-  def show
-    current_employee
-  end  
+  def show; end  
    
-  def edit
-    current_employee
-  end
+  def edit; end
   
   def update
-    current_employee
     if current_employee.update(employee_params)
       redirect_to employee_path(current_employee.id)
     else
