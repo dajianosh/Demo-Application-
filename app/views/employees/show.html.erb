@@ -1,12 +1,13 @@
 <h1>Employee Profile</h1>
-  <p> 
-    <strong>Name:</strong> <%= current_employee.name%> <br>
-    <strong>Email:</strong> <%= current_employee.email%> <br>
-    <strong>Contact Number:</strong> <%= current_employee.contact_number%> <br>
-    <strong>Address:</strong> <%= current_employee.address%> <br>
-    <strong>Role:</strong> <%= current_employee.role%> <br>
-    <strong>Experience in years:</strong> <%= current_employee.experience%> <br>
-  </p>
+<p> 
+  <strong>Name:</strong> <%= current_employee.name %> <br>
+  <strong>Email:</strong> <%= current_employee.email %> <br>
+  <strong>Contact Number:</strong> <%= current_employee.contact_number %> <br>
+  <strong>Address:</strong> <%= current_employee.address %> <br>
+  <strong>Role:</strong> <%= current_employee.role %> <br>
+  <strong>Experience in years:</strong> <%= current_employee.experience %> <br>
+</p>
 
-  Logged in as: <%= current_employee.email %><br>
-  <%= button_to 'Logout', new_session_path, method: :delete %>
+Logged in as: <%= current_employee.email %> <br>
+<%= button_to 'Logout', destroy_employee_session_path, method: :delete %>
+<%= link_to 'Edit Profile Details', edit_employee_path %>

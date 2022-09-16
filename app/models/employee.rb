@@ -1,7 +1,8 @@
 class Employee < ApplicationRecord
-  has_secure_password
+  
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
+  
   validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: 'is invalid' }
-  validates :password, length: {minimum: 4}
   validates :name, :address, presence: true
   validates :role, presence:  { message: "Please select a Role" }
   validates :contact_number, presence: true, numericality:  { message: "%{value} seems wrong" }

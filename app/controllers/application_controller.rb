@@ -1,8 +1,13 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_employee
-  
-  def current_employee
-    @employee ||= Employee.find_by(id: session[:employee_id]) if session[:employee_id].present?
-  end 
+  protect_from_forgery with: :exception
+  before_action :update_allowed_parameters, if: :devise_controller?
 
+  def after_sign_in_path_for(resource)
+    employee_path(resource)
+  end
+
+  protected
+  def update_allowed_parameters
+    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:email, :password, :password_confirmation, :name, :role, :address, :contact_number, :experience) }
+  end
 end
