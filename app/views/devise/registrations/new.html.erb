@@ -10,24 +10,22 @@
             <h3 class="fs-4 card-title fw-bold mb-4">Login</h3>
             <%= form_with model: @employee, url: employee_registration_path, method: :post, local: true do |f| %>
               <div class="field">
-                <%= f.label :email, class: "mb-2 text-muted" %><br />
+                <%= f.label :email, class: "mb-2 text-muted" %><br>
                 <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
                 <%= render "shared/error_messages", { field: :email, object: @employee } %>
               </div>
               <div class="field">
                 <%= f.label :password, class: "mb-2 text-muted" %>
-                <% if @minimum_password_length %>
-                  <em>(<%= @minimum_password_length %> characters minimum)</em>
-                <% end %><br />
+                  <em>(<%= @minimum_password_length %> characters minimum)</em> <% if @minimum_password_length %> <% end %> <br>
                 <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
                 <%= render "shared/error_messages", { field: :password, object: @employee } %>
               </div>
               <div class="field">
-                <%= f.label :password_confirmation, class: "mb-2 text-muted" %><br />
+                <%= f.label :password_confirmation, class: "mb-2 text-muted" %><br>
                 <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
               </div>
               <div class="field">
-                <%= f.label :name, class: "mb-2 text-muted" %><br />
+                <%= f.label :name, class: "mb-2 text-muted" %><br>
                 <%= f.text_field :name, class: "form-control" %>
                 <%= render "shared/error_messages", { field: :name, object: @employee } %>
               </div>
@@ -37,17 +35,17 @@
                 <%= render "shared/error_messages", { field: :role, object: @employee } %>
               </div>
               <div class="field">
-                <%= f.label :address, class: "mb-2 text-muted" %><br />
+                <%= f.label :address, class: "mb-2 text-muted" %><br>
                 <%= f.text_field :address, class: "form-control" %>
                 <%= render "shared/error_messages", { field: :address, object: @employee } %>
               </div>
               <div class="field">
-                <%= f.label :contact_number, class: "mb-2 text-muted" %><br />
+                <%= f.label :contact_number, class: "mb-2 text-muted" %><br>
                 <%= f.text_field :contact_number, class: "form-control" %>
                 <%= render "shared/error_messages", { field: :contact_number, object: @employee } %>
               </div>
               <div class="field">
-                <%= f.label :experience, class: "mb-2 text-muted" %><br />
+                <%= f.label :experience, class: "mb-2 text-muted" %><br>
                 <%= f.number_field :experience, class: "form-control" %>
                 <%= render "shared/error_messages", { field: :experience, object: @employee } %>
               </div>
@@ -56,9 +54,9 @@
               </div>
             <% end %>
             <div class="card-footer py-3 border-0">
-							<div class="text-center">
-								Already have an account? <a href="/employees/sign_in" class="text-dark">Sign In</a>
-							</div>
+              <div class="text-center">
+                Already have an account? <a href="/employees/sign_in" class="text-dark">Sign In</a>
+              </div>
             </div>
           </div>
         </div>
