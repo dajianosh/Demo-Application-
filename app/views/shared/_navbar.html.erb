@@ -1,24 +1,24 @@
 <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
 	<div class="container-fluid ">
 		<a class="navbar-brand " href="/employees/sign_in">Home</a>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		  <span class="navbar-toggler-icon"></span>
-		</button>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 		<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-		  <ul class="navbar-nav ">
+			<ul class="navbar-nav ">
 				<% if employee_signed_in? %>
 					<li class="nav-item">
-			  	<%= link_to 'Sign Out', destroy_employee_session_path, method: :delete, class: "nav-link active" %>
+					<%= link_to 'Sign Out', destroy_employee_session_path, method: :delete, class: "nav-link active" %>
 					</li>
 				<% else %>
 					<li class="nav-item">
-			  		<a class="nav-link active" aria-current="page" href="/employees/sign_in">Sign In</a>
+						<a class="nav-link active" aria-current="page" href="/employees/sign_in">Sign In</a>
 					</li>
 				<% end %>
 				<li class="nav-item">
-			  	<%= link_to 'Edit Profile', edit_employee_path, class: "nav-link active" %>
-				</li>			
-		  </ul>		  
+					<%= link_to 'Edit Profile', edit_employee_path, class: "nav-link active" %>
+				</li>
+			</ul>
 		</div>
 	</div>
 </nav>
