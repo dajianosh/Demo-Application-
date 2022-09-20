@@ -8,7 +8,7 @@
         <div class="card shadow-lg">
           <div class="card-body p-5">
             <h3 class="fs-4 card-title fw-bold mb-4">Login</h3>
-            <%= form_with model: @employee, url: employee_session_path , local: true do |f| %>
+            <%= form_with model: @employee, url: employee_session_path, local: true do |f| %>
               <div class="mb-3">
                 <%= f.label :email , class: "mb-2 text-muted"%><br/>
                 <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
