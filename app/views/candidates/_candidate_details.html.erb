@@ -1,0 +1,47 @@
+<section class="h-100">
+  <div class="container h-100">
+    <div class="row justify-content-sm-center h-100">
+      <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
+        <div class="text-center my-5">
+          <h2> <%= @candidate.persisted? ? "Edit Candidate Details" : "Add candidate details" %></h2>
+        </div>
+        <div class="card shadow-lg">
+          <div class="card-body p-5">
+            <h3 class="fs-4 card-title fw-bold mb-4">Candidate Details</h3>
+            <%= form_with model: @candidate, url: url, local: true do |f| %>
+              <div class="field">
+                <%= f.label :email, class: "mb-2 text-muted" %><br>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+                <%= render "shared/error_messages", { field: :email, object: @candidate } %>
+              </div>
+              <div class="field">
+                <%= f.label :name, class: "mb-2 text-muted" %><br>
+                <%= f.text_field :name, class: "form-control" %>
+                <%= render "shared/error_messages", { field: :name, object: @candidate } %>
+              </div>
+              <div class="field">
+                <%= f.label :address, class: "mb-2 text-muted" %><br>
+                <%= f.text_field :address, class: "form-control" %>
+                <%= render "shared/error_messages", { field: :address, object: @candidate } %>
+              </div>
+              <div class="field">
+                <%= f.label :contact_number, class: "mb-2 text-muted" %><br>
+                <%= f.text_field :contact_number, class: "form-control" %>
+                <%= render "shared/error_messages", { field: :contact_number, object: @candidate } %>
+              </div>
+              <div class="field">
+                <%= f.label :experience, class: "mb-2 text-muted" %><br>
+                <%= f.number_field :experience, class: "form-control" %>
+                <%= render "shared/error_messages", { field: :experience, object: @candidate } %>
+              </div>
+              <div class="actions">
+                <%= f.submit @candidate.persisted? ? "Update Changes" : "Add candidate details", class: "btn btn-primary ms-auto" %><br>
+                <%= link_to "Back", :back %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

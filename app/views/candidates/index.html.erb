@@ -1,0 +1,23 @@
+<h1 style="text-align:center">Candidates</h1>
+<div class="row">
+  <div class="col-sm-3">
+    <div style="text-align:center">
+      <a href="/candidates/new" >
+        <%= image_tag "plus_sign.png"  %>
+      </a>
+    </div>
+  </div>
+  <% @candidates.each do |candidate|%>
+    <div class="col-sm-3">
+      <div class="card m-2" style="width: 15rem;">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp" alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+        <div class="card-body">
+          <h5 class="card-title"><%= candidate.name %></h5>
+          <%= link_to 'View Candidate', candidate_path(candidate.id), class: "nav-link active" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<br>
+<%= link_to "Back", employee_path(current_employee) %>
