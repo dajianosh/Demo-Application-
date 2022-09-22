@@ -13,11 +13,11 @@
         <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp" alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
         <div class="card-body">
           <h5 class="card-title"><%= candidate.name %></h5>
-          <%= link_to 'View Candidate', candidate_path(candidate.id), class: "nav-link active" %>
+          <%= link_to 'View Candidate', candidate, class: "nav-link active" %>
         </div>
       </div>
     </div>
   <% end %>
 </div>
 <br>
-<%= link_to "Back", employee_path(current_employee) %>
+<%= link_to "Back", current_employee %>

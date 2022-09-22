@@ -6,7 +6,7 @@ class CandidatesController < ApplicationController
     @candidates = Candidate.all
   end
   
-  def show;  end
+  def show; end
 
   def new
     @candidate = Candidate.new
