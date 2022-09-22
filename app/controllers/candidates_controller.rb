@@ -32,7 +32,7 @@ class CandidatesController < ApplicationController
   end  
 
   def destroy
-    @candidate.destroy
+    @candidate.destroy!
     redirect_to candidates_path
   end  
   
