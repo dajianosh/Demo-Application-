@@ -6,5 +6,5 @@ class Employee < ApplicationRecord
   validates :name, :address, presence: true
   validates :role, presence:  { message: "Please select a Role" }
   validates :contact_number, presence: true, numericality:  { message: "%{value} seems wrong" }
-  validates :experience, presence: true, numericality:  { message: "has to be in number of years" }
+  validates :experience, presence: true, numericality: { greater_than_or_equal_to: 0 }
 end
