@@ -8,7 +8,8 @@
       <ul class="navbar-nav ">
         <% if employee_signed_in? %>
           <% if current_employee.role == "HR"%>
-            <%= link_to 'Candidate Index', candidates_path, class: "nav-link active" %>
+            <%= link_to 'View Candidates', candidates_path, class: "nav-link active" %>
+            <%= link_to 'Add Skill', new_skill_path, class: "nav-link active" %>
           <% end %>	
           <li class="nav-item">
             <%= link_to 'Sign Out', destroy_employee_session_path, method: :delete, class: "nav-link active" %>

@@ -34,6 +34,10 @@
                 <%= f.number_field :experience, class: "form-control" %>
                 <%= render "shared/error_messages", { field: :experience, object: @candidate } %>
               </div>
+              <div class="field">
+                <%= f.label :skill_ids, "Skills", class: "mb-2 text-muted" %><br>
+                <%= f.select :skill_ids, Skill.all.map { |s| [s.name, s.id] }, { include_blank: true }, { class: 'chosen-select', multiple: true } %><br />
+              </div>
               <div class="actions">
                 <%= f.submit @candidate.persisted? ? "Update Changes" : "Add candidate details", class: "btn btn-primary ms-auto" %><br>
                 <%= link_to "Back", :back %>

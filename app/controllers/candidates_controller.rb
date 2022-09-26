@@ -38,7 +38,7 @@ class CandidatesController < ApplicationController
   
   private
   def candidate_params
-    params.require(:candidate).permit(:email, :name, :address, :contact_number, :experience)
+    params.require(:candidate).permit(:email, :name, :address, :contact_number, :experience, skill_ids: [] )
   end  
 
   def check_employee_role

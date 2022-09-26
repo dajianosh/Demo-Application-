@@ -38,6 +38,12 @@
                     <h6>Experience in year(s)</h6>
                     <p class="text-muted"><%= current_employee.experience %></p>
                   </div>
+                  <% if current_employee.skills.present?%>
+                    <div>
+                      <h6>Skills</h6>
+                      <p class="text-muted"><%= current_employee.skills.pluck(:name).join(", ") %></p>
+                    </div>
+                  <% end %>
                 </div>
               </div>
             </div>
