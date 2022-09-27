@@ -39,6 +39,8 @@
                       <h6>Skills</h6>
                       <p class="text-muted"><%= @candidate.skills.pluck(:name).join(", ") %></p>
                    </div>
+                   <% else %>
+                    <%= "No skills yet. Please add skill(s)" %> 
                   <% end %>
                   <div>
                     <button type="button" class="btn btn-primary">

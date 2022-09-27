@@ -43,6 +43,8 @@
                       <h6>Skills</h6>
                       <p class="text-muted"><%= current_employee.skills.pluck(:name).join(", ") %></p>
                     </div>
+                  <% else %> 
+                    <%= "No skills added. Please add skill(s) to your profile" %> 
                   <% end %>
                 </div>
               </div>

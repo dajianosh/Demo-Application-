@@ -24,7 +24,6 @@ class SkillsController < ApplicationController
   end  
 
   def check_employee_role
-    redirect_to employee_path(current_employee), notice:'This feature is limited to only HRs' if current_employee.role == "Resource"
+    redirect_to employee_path(current_employee), notice:'This feature is limited to only HRs' unless current_employee.role == "HR"
   end  
-  
 end
