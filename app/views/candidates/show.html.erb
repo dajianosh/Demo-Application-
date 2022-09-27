@@ -6,8 +6,11 @@
           <div class="row g-0">
             <div class="col-md-4 gradient-custom text-center text-white"
               style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
-                alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+              <% if @candidate.profile_photo.attached? %>
+                <%= image_tag url_for(@candidate.profile_photo), :size => '120x120' %>
+              <% else %>
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp" alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+              <% end %>
             </div>
             <div class="col-md-8">
               <div class="card-body p-4">

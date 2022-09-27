@@ -38,6 +38,9 @@
                 <%= f.label :skill_ids, "Skills", class: "mb-2 text-muted" %><br>
                 <%= f.select :skill_ids, Skill.all.map { |skill| [skill.name, skill.id] }, { include_blank: true }, { class: 'chosen-select', multiple: true } %><br>
               </div>
+              <div class="field">
+               <%= f.file_field :profile_photo %><br><br>
+              </div>
               <div class="actions">
                 <%= f.submit @candidate.persisted? ? "Update Changes" : "Add candidate details", class: "btn btn-primary ms-auto" %><br>
                 <%= link_to "Back", :back %>
