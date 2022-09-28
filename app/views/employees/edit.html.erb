@@ -25,6 +25,10 @@
     <%= f.number_field :experience %>
     <%= render "shared/error_messages", { field: :experience, object: current_employee } %>
   </div>
+   <div class="field">
+   <%= f.label :skill_ids, "Skills", class: "mb-2 text-muted" %><br>
+   <%= f.select :skill_ids, Skill.all.map { |skill| [skill.name, skill.id] }, { include_blank: true }, { class: 'chosen-select', multiple: true } %><br>
+  </div>
   <div class="actions">
     <%= f.submit "Confirm Changes" %>
   </div>
