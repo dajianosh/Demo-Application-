@@ -1,0 +1,50 @@
+<section class="h-100">
+  <div class="container h-100">
+    <div class="row justify-content-sm-center h-100">
+      <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
+        <div class="text-center my-5">
+           <h2> <%= @interview.persisted? ? "Edit Interview Details" : "Schedule Interview" %></h2>
+        </div>
+        <div class="card shadow-lg">
+          <div class="card-body p-5">
+            <h3 class="fs-4 card-title fw-bold mb-4">Interview Details</h3>
+            <%= form_with model: @interview, local: true do |f| %>
+              <div class="field">
+                <%= f.label :employee_id, "Select Interviewer", class: "mb-2 text-muted" %><br>
+                <%= f.select :employee_id, Employee.where(role: "Resource").map { |employee| [employee.name, employee.id] }, { include_blank: true }, { class: 'chosen-select' } %><br>
+              </div>
+              <div class="field">
+                <%= f.label :candidate_id, "Select Candidate", class: "mb-2 text-muted" %><br>
+                <%= f.select :candidate_id, Candidate.all.map { |candidate| [candidate.name, candidate.id] }, { include_blank: true }, { class: 'chosen-select' } %><br>
+              </div>
+              <div class="field">
+                <%= f.label :select_date, class: "mb-2 text-muted" %><br>
+                <%= f.date_field :date, :value => @date, class: "form-control" %>
+                <%= render "shared/error_messages", { field: :date, object: @interview } %>
+              </div>
+              <div class="field">
+                <%= f.label :select_time, class: "mb-2 text-muted" %><br>
+                <%= f.time_field :start_time, :value => @start_time, class: "form-control" %>
+                <%= render "shared/error_messages", { field: :start_time, object: @interview } %>
+              </div>
+              <div class="field">
+                <%= f.label :mode, class: "mb-2 text-muted" %><br>
+                <%= f.select :mode, mode_input %>
+                <%= render "shared/error_messages", { field: :mode, object: @interview } %>
+              </div>
+              <div class="field">
+                <%= f.label :meeting_link, class: "mb-2 text-muted" %><br>
+                <%= f.text_field :link, class: "form-control" %>
+                <%= render "shared/error_messages", { field: :link, object: @interview } %>
+              </div>
+              <div class="actions">
+                <%= f.submit @interview.persisted? ? "Update Interview" : "Create Interview", class: "btn btn-primary ms-auto" %><br>
+                <%= link_to "Back", :back %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
