@@ -11,7 +11,15 @@
     <div class="col-sm-3">
       <%= link_to candidate_path(candidate.id) do %>
         <div class="card m-2" style="width: 15rem;">
-          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp" alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+          <% if candidate.profile_photo.attached? %>
+            <div class="text-center">
+              <%= image_tag url_for(candidate.profile_photo), :size => '100x120' %>
+            </div>
+          <% else %>   
+            <div class="text-center"> 
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp" alt="Avatar" class="img-fluid my-5" width="70" height="50" />
+            </div>
+          <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= candidate.name %></h5>
           </div>

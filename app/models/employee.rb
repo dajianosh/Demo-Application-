@@ -1,6 +1,7 @@
 class Employee < ApplicationRecord
   has_many :user_skills, as: :skillable
   has_many :skills, through: :user_skills
+  has_one_attached :profile_photo
   
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
   

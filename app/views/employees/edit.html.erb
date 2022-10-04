@@ -26,8 +26,14 @@
     <%= render "shared/error_messages", { field: :experience, object: current_employee } %>
   </div>
    <div class="field">
-   <%= f.label :skill_ids, "Skills", class: "mb-2 text-muted" %><br>
+   <%= f.label :skill_ids, "Skills" %><br>
    <%= f.select :skill_ids, Skill.all.map { |skill| [skill.name, skill.id] }, { include_blank: true }, { class: 'chosen-select', multiple: true } %><br>
+   <%= f.label :skill_ids, "Skills" %><br>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.label :profile_photo %><br>
+    <%= f.file_field :profile_photo %><br><br>
   </div>
   <div class="actions">
     <%= f.submit "Confirm Changes" %>
