@@ -3,7 +3,7 @@
     <a class="navbar-brand " href="/employees/sign_in">
     <% if current_employee.profile_photo.attached? %>
       <%= image_tag url_for(current_employee.profile_photo), :size => '50x50', class: 'rounded-circle' %>
-     <% else %>
+    <% else %>
       <%= image_tag "blank-user.jpg", :size => '50x50',  class: 'rounded-circle' %>
     <% end %>
     </a>
