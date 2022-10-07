@@ -1,6 +1,6 @@
 class Candidate < ApplicationRecord
   has_many :user_skills, as: :skillable, dependent: :destroy
-  has_many :skills, through: :user_skills, dependent: :destroy
+  has_many :skills, through: :user_skills
   has_many :interviews, dependent: :destroy
   has_many :employees, through: :interviews
   has_one_attached :profile_photo

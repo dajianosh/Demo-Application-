@@ -1,6 +1,6 @@
 class Employee < ApplicationRecord
   has_many :user_skills, as: :skillable, dependent: :destroy
-  has_many :skills, through: :user_skills, dependent: :destroy
+  has_many :skills, through: :user_skills
   has_many :interviews, dependent: :destroy
   has_many :created_interviews, class_name: "Interview", foreign_key: "creator_id"
   has_many :candidates, through: :interviews

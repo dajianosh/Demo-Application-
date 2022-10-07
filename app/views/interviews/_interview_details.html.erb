@@ -19,17 +19,17 @@
               </div>
               <div class="field">
                 <%= f.label :select_date, class: "mb-2 text-muted" %><br>
-                <%= f.date_field :date, :value => @date, class: "form-control" %>
+                <%= f.date_field :date, :value => @interview&.scheduled_at&.strftime("%Y-%m-%d"), class: "form-control" %>
                 <%= render "shared/error_messages", { field: :date, object: @interview } %>
               </div>
               <div class="field">
                 <%= f.label :select_time, class: "mb-2 text-muted" %><br>
-                <%= f.time_field :start_time, :value => @start_time, class: "form-control" %>
+                <%= f.time_field :start_time, :value => @interview&.scheduled_at&.strftime("%H:%M"), class: "form-control" %>
                 <%= render "shared/error_messages", { field: :start_time, object: @interview } %>
               </div>
               <div class="field">
                 <%= f.label :mode, class: "mb-2 text-muted" %><br>
-                <%= f.select :mode, mode_input %>
+                <%= f.select :mode, mode_input, class: "chosen-select" %>
                 <%= render "shared/error_messages", { field: :mode, object: @interview } %>
               </div>
               <div class="field">

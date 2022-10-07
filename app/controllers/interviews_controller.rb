@@ -1,9 +1,16 @@
 class InterviewsController < ApplicationController
-  before_action :check_employee_role, only: [:new, :create, :edit, :update, :destroy!]
+  before_action :check_employee_role, only: [:new, :create, :edit, :update, :destroy]
   before_action :find_interview, only: %i[edit update destroy]
 
   def index
-    interview_index
+    if is_HR?
+      @interviews = current_employee.created_interviews
+    else
+      @interviews = current_employee.interviews
+        @upcoming_interviews = current_employee.interviews.all.where("scheduled_at > ?", Time.now)
+        @completed_interviews = current_employee.interviews.all.where.not(completed_time: [nil, ""])
+        @pending_interviews = current_employee.interviews.all.where(completed_time: nil)  
+    end
   end
 
   def new
@@ -19,10 +26,7 @@ class InterviewsController < ApplicationController
     end
   end
 
-  def edit
-    @date =  @interview.scheduled_at.strftime("%Y-%m-%d")
-    @start_time = @interview.scheduled_at.strftime("%H:%M")
-  end
+  def edit; end
   
   def update
     if @interview.update(interview_params)
@@ -33,8 +37,11 @@ class InterviewsController < ApplicationController
   end
   
   def destroy
-    @interview.destroy!
-    redirect_to interviews_path
+    if @interview.destroy
+      redirect_to interviews_path
+    else
+      flash[:notice] = "Could not delete interview"
+    end  
   end
   
   private
@@ -43,30 +50,14 @@ class InterviewsController < ApplicationController
   end
 
   def check_employee_role
-    redirect_to employee_path(current_employee), notice:'This feature is limited to only HRs' unless current_employee.role == "HR"
+    redirect_to employee_path(current_employee), notice:'This feature is limited to only HRs' unless is_HR?
   end  
 
   def find_interview
-    @interview = Interview.find(params[:id])
-  end
-
-  def interview_index
-    if current_employee.role == "HR"
-      @interviews = current_employee.created_interviews
-    elsif current_employee.role =="Resource"
-      @interviews = current_employee.interviews
-      @upcoming_interviews = []
-      @completed_interviews = []
-      @pending_interviews = []
-      @interviews.each do |interview|
-        if interview.scheduled_at > Time.now
-          @upcoming_interviews << interview  
-        elsif interview.completed_time.present?  
-          @completed_interviews << interview
-        else
-          @pending_interviews << interview
-        end
-      end
-    end
+      @interview = current_employee.created_interviews.find_by(id: params[:id])
+      if @interview.blank?
+        flash[:notice] = "You tried to access someone else's interview"
+        redirect_to interviews_path
+      end  
   end
 end
