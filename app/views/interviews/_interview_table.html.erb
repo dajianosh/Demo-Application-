@@ -18,10 +18,8 @@
       <td><%= object.candidate.name %></td>
       <td><%= object.creator.name %></td>
       <td><%= object.scheduled_at.strftime("%d-%h-%y %I:%M %p") %></td>
-      <% if object.completed_time.present? %>
+      <% if local_assigns[:completed] %>
         <td><%= Time.parse(object.completed_time).strftime("%I:%M %p") %></td>
-      <%else%>
-        <td><%= object.completed_time %></td>
       <%end%>
       <td><%= object.mode %></td>
       <td><a href="<%= object.link %>" ><%= object.link %></a></td>
@@ -30,6 +28,21 @@
           <%= link_to image_tag("edit.png", border: 0, :size => '20x20'), edit_interview_path(object.id), class: "nav-link active" %><br>
           <%= link_to image_tag("delete.png", border: 0, :size => '20x20'), interview_path(object.id), method: :delete, class: "nav-link active" %>
         </td>
+      <% else %> 
+        <% if  object.interview_feedback.present? %>
+          <% if  local_assigns[:completed] %>
+          <td>
+            <%= link_to "Show Feedback", interview_interview_feedback_path(object.id, object.interview_feedback.id, object.interview_feedback.interview_answer_ratings.ids) %>
+          </td>
+          <%end%>      
+      <% end %> 
+        <% if local_assigns[:pending] %>
+          <td>
+            <% if  object.interview_feedback.blank? %>
+              <%= link_to image_tag("feedback.jpg", border: 0, :size => '20x20'), new_interview_interview_feedback_path(object.id), class: "nav-link active" %><br>
+            <% end %>  
+          </td>  
+        <% end %>
       <% end %>
     </tr>
   <% end %>

@@ -1,0 +1,53 @@
+<section class="h-100">
+  <div class="container h-100">
+    <div class="row justify-content-sm-center h-100">
+      <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
+        <div class="text-center my-5">
+          <h2> <%= @interview_feedback.persisted? ? "Edit Feedback" : "Add Feedback" %></h2>
+        </div>
+        <div class="card shadow-lg">
+          <div class="card-body p-5">
+            <h3 class="fs-4 card-title fw-bold mb-4">Feedback Details</h3>
+            <%= form_with model: @interview_feedback, url: url , local: true do |f| %>
+              <div class="field">
+                <%= f.hidden_field :interview_id, :value => @interview.id %> 
+              </div>  
+              <fieldset>
+                <legend>Questions and Answer:</legend>
+                <%= f.fields_for :interview_answer_ratings do |question_form| %>
+                  <%= render "interview_answer_rating_fields", f: question_form %>
+                <% end %>
+                <%= link_to_add_fields "Add Question", f, :interview_answer_ratings %>
+              </fieldset> 
+              <div class="field">
+                <%= f.label :skill_rating, class: "mb-2 text-muted" %><br>
+                <%= f.number_field :skill_rating, class: "form-control" %>
+                <%= render "shared/error_messages", { field: :skill_rating, object: @interview_feedback } %>
+              </div>
+               <div class="field">
+                <%= f.label :soft_skill_rating, class: "mb-2 text-muted" %><br>
+                <%= f.number_field :soft_skill_rating, class: "form-control" %>
+                <%= render "shared/error_messages", { field: :soft_skill_rating, object: @interview_feedback } %>
+              </div>
+              <div class="field">
+                <%= f.label :final_rating, class: "mb-2 text-muted" %><br>
+                <%= f.number_field :final_rating, class: "form-control" %>
+                <%= render "shared/error_messages", { field: :final_rating, object: @interview_feedback } %>
+              </div>
+               <div class="field">
+                <%= f.label :completed_time, class: "mb-2 text-muted" %><br>
+                <%= f.time_field :completed_time,:value => @interview.completed_time, class: "form-control" %>
+                <%= render "shared/error_messages", { field: :completed_time, object: @interview } %>
+              </div>
+              <br>
+              <div class="actions">
+                <%= f.submit @interview_feedback.persisted? ? "Update Feedback" : "Add Feedback", class: "btn btn-primary ms-auto" %><br>
+                <%= link_to "Back", :back %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -2,6 +2,7 @@ class Interview < ApplicationRecord
   belongs_to :employee
   belongs_to :creator, class_name: "Employee"
   belongs_to :candidate
+  has_one :interview_feedback, dependent: :delete
   enum mode: { Offline: 0, Online: 1 }
 
   attr_accessor :date, :start_time
