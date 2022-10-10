@@ -23,7 +23,7 @@
       <%end%>
       <td><%= object.mode %></td>
       <td><a href="<%= object.link %>" ><%= object.link %></a></td>
-      <% if current_employee.role =="HR" %>
+      <% if is_HR? %>
         <td>
           <%= link_to image_tag("edit.png", border: 0, :size => '20x20'), edit_interview_path(object.id), class: "nav-link active" %><br>
           <%= link_to image_tag("delete.png", border: 0, :size => '20x20'), interview_path(object.id), method: :delete, class: "nav-link active" %>

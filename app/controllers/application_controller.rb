@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def is_HR?
-    return current_employee.role == "HR"
+    current_employee.role == "HR"
   end  
 
   protected

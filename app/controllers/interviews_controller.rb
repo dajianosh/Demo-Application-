@@ -6,10 +6,9 @@ class InterviewsController < ApplicationController
     if is_HR?
       @interviews = current_employee.created_interviews
     else
-      @interviews = current_employee.interviews
-        @upcoming_interviews = current_employee.interviews.all.where("scheduled_at > ?", Time.now)
-        @completed_interviews = current_employee.interviews.all.where.not(completed_time: [nil, ""])
-        @pending_interviews = current_employee.interviews.all.where(completed_time: nil)  
+      @upcoming_interviews = upcoming_interviews
+      @completed_interviews = completed_interviews
+      @pending_interviews = pending_interviews
     end
   end
 
@@ -60,4 +59,16 @@ class InterviewsController < ApplicationController
         redirect_to interviews_path
       end  
   end
+
+  def upcoming_interviews
+    current_employee.interviews.where("scheduled_at > ?", Time.now)
+  end  
+  
+  def completed_interviews
+    current_employee.interviews.where.not(completed_time: [nil, ""])
+  end  
+
+  def pending_interviews
+    current_employee.interviews.where(completed_time: nil)  
+  end  
 end
