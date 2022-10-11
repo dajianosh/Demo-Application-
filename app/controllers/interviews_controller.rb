@@ -61,7 +61,7 @@ class InterviewsController < ApplicationController
   end
 
   def upcoming_interviews
-    current_employee.interviews.where("scheduled_at > ?", Time.now)
+    current_employee.interviews.where("scheduled_at >= ?", Time.now)
   end  
   
   def completed_interviews
@@ -69,6 +69,6 @@ class InterviewsController < ApplicationController
   end  
 
   def pending_interviews
-    current_employee.interviews.where(completed_time: nil)  
+    current_employee.interviews.where("scheduled_at < ? AND completed_time IS NULL", Time.now)
   end  
 end

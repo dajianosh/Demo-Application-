@@ -5,7 +5,9 @@
       <th>Candidate Name</th>
       <th>Creator Name</th>
       <th>Date and Time</th>
-      <th>Completed Time</th>
+      <% if local_assigns[:completed] %>
+        <th>Completed Time</th>
+      <%end%>
       <th>Mode</th>
       <th>Link</th>
     </tr>
