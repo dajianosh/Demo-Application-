@@ -1,0 +1,23 @@
+<% if is_HR? %>
+  <h1 style="text-align:center">Interviews scheduled by you</h1>
+  <%= render "interview_table", { objects: @interviews } %>
+<% else %>
+  <% if @upcoming_interviews.present? %>
+    <h1 style="text-align:center">Upcoming Interviews</h1>
+    <%= render "interview_table", { objects: @upcoming_interviews, upcoming: :true } %><br>
+  <% else %>
+    <h1>No Upcoming Interviews  
+  <% end %>  
+  <% if @completed_interviews.present? %>
+    <h1 style="text-align:center">Completed Interviews</h1>
+    <%= render "interview_table", { objects: @completed_interviews, completed: :true } %><br>
+  <% else %>
+    <h1>No Completed Interviews</h1>
+  <% end %>
+  <% if @pending_interviews.present? %>
+    <h1 style="text-align:center">Pending Interviews</h1>
+    <%= render "interview_table", { objects: @pending_interviews, pending: :true } %>
+  <% else %>
+    <h1>No Pending Interviews</h1>
+  <% end %>
+<% end %>

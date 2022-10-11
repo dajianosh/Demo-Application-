@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_26_140001) do
+ActiveRecord::Schema.define(version: 2022_10_03_061743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,21 @@ ActiveRecord::Schema.define(version: 2022_09_26_140001) do
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
   end
 
+  create_table "interviews", force: :cascade do |t|
+    t.integer "mode"
+    t.string "link"
+    t.bigint "employee_id", null: false
+    t.bigint "creator_id", null: false
+    t.bigint "candidate_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "completed_time"
+    t.datetime "scheduled_at"
+    t.index ["candidate_id"], name: "index_interviews_on_candidate_id"
+    t.index ["creator_id"], name: "index_interviews_on_creator_id"
+    t.index ["employee_id"], name: "index_interviews_on_employee_id"
+  end
+
   create_table "skills", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -79,5 +94,8 @@ ActiveRecord::Schema.define(version: 2022_09_26_140001) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "interviews", "candidates"
+  add_foreign_key "interviews", "employees"
+  add_foreign_key "interviews", "employees", column: "creator_id"
   add_foreign_key "user_skills", "skills"
 end
