@@ -53,11 +53,11 @@ class InterviewsController < ApplicationController
   end  
 
   def find_interview
-      @interview = current_employee.created_interviews.find_by(id: params[:id])
-      if @interview.blank?
-        flash[:notice] = "You tried to access someone else's interview"
-        redirect_to interviews_path
-      end  
+    @interview = current_employee.created_interviews.find_by(id: params[:id])
+    if @interview.blank?
+      flash[:notice] = "You tried to access someone else's interview"
+      redirect_to interviews_path
+    end  
   end
 
   def upcoming_interviews
