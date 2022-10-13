@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Interview Invitation</h1>
+    <p>
+      Hi <strong><%= @interview.candidate.name %></strong>,<br>
+      Thank you for your interest in joining our company.<br>
+      We are excited to continue forward with the interview process after analyzing your application.<br>
+      We've scheduled a interview for you on <strong><%= @interview.scheduled_at.strftime("%d-%h-%y at %I:%M %p") %></strong> with <strong><%= @interview.employee.name %></strong><br>
+      <% if @interview.mode == "Online"%>
+        Interview meeting link <a> <%= @interview.link %></a>
+      <% else %>
+        Address : IT Park  
+      <% end %>
+      The interview will last roughly 30 minutes to 1 hour.<br>
+      All the best<br>
+      Regards<br>
+      <strong><%= @interview.creator.name %>
+    </p>
+  </body>
+</html>

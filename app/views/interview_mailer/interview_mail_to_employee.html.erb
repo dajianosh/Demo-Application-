@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Interview schedule</h1>
+    <p>
+      Hi <strong><%= @interview.employee.name %></strong>,<br>
+      We've scheduled a interview to be taken by you on <strong><%= @interview.scheduled_at.strftime("%d-%h-%y at %I:%M %p") %></strong><br>
+      <% if @interview.mode == "Online"%>
+        Interview meeting link <a> <%= @interview.link %></a>
+      <% else %>
+        Address : IT Park  
+      <% end %>  
+      Candidate details:<br>
+      Candidate name - <%= @interview.candidate.name %><br>
+      Experience(in years) - <%= @interview.candidate.experience %><br>
+      Regards<br>
+      <strong><%= @interview.creator.name %></strong>
+    </p>
+  </body>
+</html>

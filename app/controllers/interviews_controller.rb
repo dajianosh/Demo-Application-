@@ -19,6 +19,8 @@ class InterviewsController < ApplicationController
   def create
     @interview = current_employee.created_interviews.new(interview_params)
     if @interview.save
+      InterviewMailer.with(interview: @interview).interview_mail_to_employee.deliver_later
+      InterviewMailer.with(interview: @interview).interview_mail_to_candidate.deliver_later
       redirect_to interviews_path
     else
       render :new
