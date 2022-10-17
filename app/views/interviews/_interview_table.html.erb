@@ -31,16 +31,14 @@
       <% else %> 
         <% if  object.interview_feedback.present? %>
           <% if  local_assigns[:completed] %>
-          <td>
-            <%= link_to "Show Feedback", interview_interview_feedback_path(object.id, object.interview_feedback.id, object.interview_feedback.interview_answer_ratings.ids) %>
-          </td>
+            <td>
+              <%= link_to "Show Feedback", interview_interview_feedback_path(object.id, object.interview_feedback.id, object.interview_feedback.interview_answer_ratings.ids) %>
+            </td>
           <%end%>      
-      <% end %> 
+        <% end %> 
         <% if local_assigns[:pending] %>
-          <td>
-            <% if  object.interview_feedback.blank? %>
-              <%= link_to image_tag("feedback.jpg", border: 0, :size => '20x20'), new_interview_interview_feedback_path(object.id), class: "nav-link active" %><br>
-            <% end %>  
+          <td>  
+            <%= link_to image_tag("feedback.jpg", border: 0, :size => '20x20'), edit_interview_interview_feedback_path(object.id, object.interview_feedback.id, object.interview_feedback.interview_answer_ratings.ids) %><br>
           </td>  
         <% end %>
       <% end %>

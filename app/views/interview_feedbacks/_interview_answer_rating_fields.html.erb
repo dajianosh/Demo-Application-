@@ -2,7 +2,7 @@
   <%= f.hidden_field :_destroy %>
   <div class="field">
     <%= f.label :question_bank_id, "Questions", class: "mb-2 text-muted" %><br>
-    <%= f.select :question_bank_id, QuestionBank.all.map { |question| [question.question, question.id] }, { include_blank: true }, { class: 'chosen-select', multiple: false } %><br>
+    <%= f.select :question_bank_id, QuestionBank.all.map { |question| [question.question, question.id] }, { include_blank: true }, { class: 'chosen-select chosen-default', multiple: false } %><br>
   </div>
   <div class="field">
     <%= f.label :answer, class: "mb-2 text-muted" %><br>
