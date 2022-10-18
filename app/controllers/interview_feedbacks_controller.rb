@@ -2,7 +2,6 @@ class InterviewFeedbacksController < ApplicationController
   before_action :find_interview, only: %i[edit update show destroy]
   before_action :find_feedback_and_answer_ratings, only: %i[show edit update destroy]
 
-
   def show; end  
   
   def edit; end
@@ -20,8 +19,7 @@ class InterviewFeedbacksController < ApplicationController
   private
 
   def interview_feedback_params
-    params.require(:interview_feedback).permit(:skill_rating, :soft_skill_rating, :final_rating, :interview_id,
-       interview_answer_ratings_attributes: [:id, :question_bank_id, :answer, :rating, :_destroy])
+    params.require(:interview_feedback).permit(:skill_rating, :soft_skill_rating, :final_rating, :interview_id, interview_answer_ratings_attributes: [:id, :question_bank_id, :answer, :rating, :_destroy])
   end  
 
   def find_interview

@@ -23,6 +23,5 @@ class Interview < ApplicationRecord
 
   def build_default_interview_feedback
     build_interview_feedback
-    true
   end  
 end
