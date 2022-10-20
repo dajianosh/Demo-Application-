@@ -1,7 +1,9 @@
-$(document).on('turbolinks:load', function(){
+chosenInit = function(){
   $('.chosen-select').chosen({
     allow_single_deselect: true,
     no_results_text: 'No results matched',
     width: '200px'
   });
-})
+}
+
+$(document).on('turbolinks:load', chosenInit)

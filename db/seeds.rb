@@ -18,3 +18,55 @@ Skill.create!([{
 {
   name: "Java"   
 }])
+
+
+QuestionBank.create!([{
+  question: "List the features of Java Programming language",
+  difficulty_level: "Easy",
+  tech: "Java"
+},
+{
+  question: "What is the difference between JDK, JRE, and JVM?",
+  difficulty_level: "Easy",
+  tech: "Java"
+},
+{
+  question: "What are the various access specifiers in Java?",
+  difficulty_level: "Easy",
+  tech: "Java"
+},
+{
+  question: "How many types of constructors are used in Java?",
+  difficulty_level: "Medium",
+  tech: "Java"
+},
+{
+  question: "What is an abstract class in C++?",
+  difficulty_level: "Medium",
+  tech: "C++"
+},
+{
+  question: "What is the difference between struct and class?",
+  difficulty_level: "Difficult",
+  tech: "C++"
+},
+{
+  question: "Name the four types of variables available in Ruby Class",
+  difficulty_level: "Easy",
+  tech: "ROR"
+},
+{
+  question: "How can you protect Rails against Cross-Site Request Forgery?",
+  difficulty_level: "Medium",
+  tech: "ROR"
+},
+{
+  question: "What is the Rails Controller?",
+  difficulty_level: "Easy",
+  tech: "ROR"
+},
+{
+  question: "What command can you use to create a controller for the subject?",
+  difficulty_level: "Easy",
+  tech: "ROR"
+}])

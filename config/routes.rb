@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   resources :employees, only: [:index, :show, :edit, :update]
   resources :skills, only: [:create, :new, :index]
   resources :candidates
-  resources :interviews
+  resources :interviews do
+    resources :interview_feedbacks
+  end
 end

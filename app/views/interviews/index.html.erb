@@ -6,7 +6,7 @@
     <h1 style="text-align:center">Upcoming Interviews</h1>
     <%= render "interview_table", { objects: @upcoming_interviews, upcoming: :true } %><br>
   <% else %>
-    <h1>No Upcoming Interviews  
+    <h1>No Upcoming Interviews </h1> 
   <% end %>  
   <% if @completed_interviews.present? %>
     <h1 style="text-align:center">Completed Interviews</h1>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_03_061743) do
+ActiveRecord::Schema.define(version: 2022_10_06_054921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,27 @@ ActiveRecord::Schema.define(version: 2022_10_03_061743) do
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
   end
 
+  create_table "interview_answer_ratings", force: :cascade do |t|
+    t.string "answer"
+    t.integer "rating"
+    t.bigint "interview_feedback_id", null: false
+    t.bigint "question_bank_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["interview_feedback_id"], name: "index_interview_answer_ratings_on_interview_feedback_id"
+    t.index ["question_bank_id"], name: "index_interview_answer_ratings_on_question_bank_id"
+  end
+
+  create_table "interview_feedbacks", force: :cascade do |t|
+    t.integer "skill_rating"
+    t.integer "soft_skill_rating"
+    t.integer "final_rating"
+    t.bigint "interview_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["interview_id"], name: "index_interview_feedbacks_on_interview_id"
+  end
+
   create_table "interviews", force: :cascade do |t|
     t.integer "mode"
     t.string "link"
@@ -76,6 +97,14 @@ ActiveRecord::Schema.define(version: 2022_10_03_061743) do
     t.index ["candidate_id"], name: "index_interviews_on_candidate_id"
     t.index ["creator_id"], name: "index_interviews_on_creator_id"
     t.index ["employee_id"], name: "index_interviews_on_employee_id"
+  end
+
+  create_table "question_banks", force: :cascade do |t|
+    t.string "question"
+    t.string "difficulty_level"
+    t.string "tech"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "skills", force: :cascade do |t|
@@ -94,6 +123,9 @@ ActiveRecord::Schema.define(version: 2022_10_03_061743) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "interview_answer_ratings", "interview_feedbacks"
+  add_foreign_key "interview_answer_ratings", "question_banks"
+  add_foreign_key "interview_feedbacks", "interviews"
   add_foreign_key "interviews", "candidates"
   add_foreign_key "interviews", "employees"
   add_foreign_key "interviews", "employees", column: "creator_id"

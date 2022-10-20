@@ -8,8 +8,12 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
+require('./nested_forms/addFields')
+require('./nested_forms/removeFields')
+
 import "bootstrap"
 require("@popperjs/core")
+
 
 // Import the specific modules you may need (Modal, Alert, etc)
 import { Tooltip, Popover } from "bootstrap"
