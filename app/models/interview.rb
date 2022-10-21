@@ -2,7 +2,7 @@ class Interview < ApplicationRecord
   belongs_to :employee
   belongs_to :creator, class_name: "Employee"
   belongs_to :candidate
-  has_one :interview_feedback, dependent: :delete
+  has_one :interview_feedback, dependent: :destroy
   before_create :build_default_interview_feedback
   enum mode: { Offline: 0, Online: 1 }
 
