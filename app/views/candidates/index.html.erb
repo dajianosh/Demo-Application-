@@ -8,9 +8,14 @@
     </div>
   </div>
   <% @candidates.each do |candidate|%>
-    <div class="col-sm-3">
-      <%= link_to candidate_path(candidate.id) do %>
-        <div class="card m-2" style="width: 15rem;">
+    <div class="col-sm-3", id = "candidate_card<%= candidate.id %>">
+      <div class="card m-2" style="width: 15rem;">
+        <%= link_to image_tag("delete.png", border: 0, :size => '30x30'),
+        candidate_path(candidate),
+        { method: "delete", remote: true, data: { confirm: "Are you sure?" },
+        class: "delete_candidate position-absolute top-0 end-0"} 
+        %>
+        <%= link_to candidate_path(candidate.id) do %>
           <% if candidate.profile_photo.attached? %>
             <div class="text-center">
               <%= image_tag url_for(candidate.profile_photo), :size => '100x120' %>
@@ -23,8 +28,8 @@
           <div class="card-body">
             <h5 class="card-title"><%= candidate.name %></h5>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   <% end %>
 </div>

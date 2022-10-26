@@ -33,7 +33,9 @@ class CandidatesController < ApplicationController
 
   def destroy
     @candidate.destroy!
-    redirect_to candidates_path
+    respond_to do |format|
+      format.js 
+    end
   end  
   
   private
